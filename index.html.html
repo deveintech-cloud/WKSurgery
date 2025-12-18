@@ -1,0 +1,4245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WK Surgery | General Practitioner | Accredited Dispensing Practice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        :root {
+            --primary: #1a6c8c;
+            --primary-light: #e8f4f9;
+            --secondary: #2a9d8f;
+            --accent: #e76f51;
+            --dark: #264653;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --gray-light: #e9ecef;
+            --success: #2a9d8f;
+            --warning: #e9c46a;
+            --danger: #e76f51;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --font-main: 'Inter', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+        }
+
+        /* Dark Mode Variables */
+        .dark-mode {
+            --primary: #2a9d8f;
+            --primary-light: #1d4f5d;
+            --secondary: #1a6c8c;
+            --accent: #e76f51;
+            --dark: #f8f9fa;
+            --light: #121212;
+            --gray: #b0b7c3;
+            --gray-light: #2d3748;
+            --white: #1e1e1e;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: var(--font-main);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #155d79;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background-color: #d45c3f;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            transition: color 0.3s;
+            padding: 5px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--gray-light);
+        }
+
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            height: 80vh;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .slide-content h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .accreditation-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .badge {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .badge i {
+            color: var(--primary);
+        }
+
+        .opening-hours {
+            background-color: rgba(255, 255, 255, 0.95);
+            color: var(--dark);
+            padding: 15px 30px;
+            border-radius: var(--border-radius);
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 20px;
+        }
+
+        .swiper-pagination-bullet {
+            background-color: white;
+            opacity: 0.7;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: var(--primary);
+            opacity: 1;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .section-subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 24px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            transition: color 0.3s;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .service-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--gray);
+            transition: color 0.3s;
+        }
+
+        .service-features i {
+            color: var(--success);
+            margin-top: 3px;
+        }
+
+        /* Doctors */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .doctor-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .doctor-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .doctor-info {
+            padding: 25px;
+        }
+
+        .doctor-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+
+        .doctor-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .doctor-details {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--primary-light);
+            transition: background-color 0.3s;
+        }
+
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin: 0 20px;
+            transition: background-color 0.3s;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--dark);
+            margin-bottom: 25px;
+            line-height: 1.7;
+            transition: color 0.3s;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+            transition: color 0.3s;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .stars {
+            color: var(--warning);
+            margin-bottom: 10px;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark);
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+            color: var(--gray);
+            transition: color 0.3s;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 25px 25px;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 20px;
+            flex-shrink: 0;
+            transition: background-color 0.3s;
+        }
+
+        .contact-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+
+        .contact-details p {
+            color: var(--gray);
+            transition: color 0.3s;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: border 0.3s, background-color 0.3s, color 0.3s;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            transition: background-color 0.3s;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #b0b7c3;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b0b7c3;
+            font-size: 0.9rem;
+        }
+
+        .admin-login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .admin-login-link a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.5rem;
+        }
+
+        .admin-login-link a:hover {
+            color: white;
+        }
+
+        /* Admin Dashboard */
+        .admin-section {
+            display: none;
+            padding: 40px 0;
+        }
+
+        .admin-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .admin-sidebar {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s;
+        }
+
+        .admin-sidebar h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gray-light);
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        .admin-nav {
+            list-style: none;
+        }
+
+        .admin-nav li {
+            margin-bottom: 10px;
+        }
+
+        .admin-nav a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--gray);
+            transition: all 0.3s;
+        }
+
+        .admin-nav a:hover, .admin-nav a.active {
+            background-color: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .admin-main {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .admin-header h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+
+        .admin-panel {
+            display: none;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th, .data-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-light);
+            transition: border-color 0.3s;
+        }
+
+        .data-table th {
+            background-color: var(--primary-light);
+            color: var(--dark);
+            font-weight: 600;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--gray-light);
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-confirmed {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .status-completed {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-cancelled {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            transition: opacity 0.3s;
+        }
+
+        .action-btn:hover {
+            opacity: 0.9;
+        }
+
+        .edit-btn {
+            background-color: var(--warning);
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .toggle-btn {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .upload-btn {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tab-nav {
+            display: flex;
+            border-bottom: 1px solid var(--gray-light);
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--gray);
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Service Editor Modal */
+        .service-editor {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .image-preview {
+            width: 100%;
+            height: 200px;
+            background-color: var(--gray-light);
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-upload {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .image-upload input {
+            flex: 1;
+        }
+
+        /* Booking Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            width: 100%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            transition: background-color 0.3s;
+        }
+
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gray);
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--dark);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .booking-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .booking-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--gray-light);
+            z-index: 1;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 2px solid var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--gray);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .step.active .step-icon {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .step.completed .step-icon {
+            background-color: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .step.active .step-label {
+            color: var(--primary);
+        }
+
+        .booking-form-page {
+            display: none;
+        }
+
+        .booking-form-page.active {
+            display: block;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .time-slot {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        .time-slot:hover {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .time-slot.selected {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .booking-summary {
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .modal-footer {
+            padding: 20px 30px;
+            border-top: 1px solid var(--gray-light);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Login Modal */
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-modal.active {
+            display: flex;
+        }
+
+        .login-form {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: var(--shadow-lg);
+            transition: background-color 0.3s;
+        }
+
+        .login-form h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--dark);
+            font-size: 1.8rem;
+            transition: color 0.3s;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 25px;
+        }
+
+        .login-form .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .login-error {
+            color: var(--danger);
+            font-size: 0.9rem;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
+        }
+
+        /* Reminder Settings */
+        .reminder-settings {
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .reminder-settings h4 {
+            margin-bottom: 20px;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+
+        .reminder-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .reminder-option {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s;
+        }
+
+        .reminder-option h5 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s;
+        }
+
+        .reminder-option p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: var(--success);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-slider {
+                height: 70vh;
+                min-height: 500px;
+            }
+            
+            .slide-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .admin-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-sidebar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-slider {
+                height: 60vh;
+                min-height: 400px;
+            }
+            
+            .slide-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .slide-content p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-steps {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+            
+            .booking-steps::before {
+                display: none;
+            }
+            
+            .step {
+                flex-direction: row;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-slider {
+                height: 50vh;
+                min-height: 350px;
+            }
+            
+            .slide-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .accreditation-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .reminder-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 10px; }
+        .mt-2 { margin-top: 20px; }
+        .mt-3 { margin-top: 30px; }
+        .mt-4 { margin-top: 40px; }
+        .mb-1 { margin-bottom: 10px; }
+        .mb-2 { margin-bottom: 20px; }
+        .mb-3 { margin-bottom: 30px; }
+        .mb-4 { margin-bottom: 40px; }
+        .d-none { display: none; }
+        .d-flex { display: flex; }
+        .justify-between { justify-content: space-between; }
+        .align-center { align-items: center; }
+        
+        /* New styles for upload button fix */
+        .upload-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .file-name {
+            font-size: 0.9rem;
+            color: var(--gray);
+            word-break: break-all;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background-color: var(--success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            max-width: 400px;
+        }
+        
+        .notification.show {
+            display: flex;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .whatsapp-badge {
+            background-color: #25D366;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        .reminder-test-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="logo-text">WK <span>Surgery</span></div>
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#doctors">Our Doctor</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="#" class="btn btn-primary" id="bookAppointmentBtn">
+                        <i class="fas fa-calendar-check"></i> Book Appointment
+                    </a>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu d-none" id="mobileMenu">
+        <div class="container">
+            <div class="mobile-nav">
+                <a href="#home" class="mobile-nav-item active">Home</a>
+                <a href="#services" class="mobile-nav-item">Services</a>
+                <a href="#doctors" class="mobile-nav-item">Our Doctor</a>
+                <a href="#about" class="mobile-nav-item">About</a>
+                <a href="#testimonials" class="mobile-nav-item">Testimonials</a>
+                <a href="#contact" class="mobile-nav-item">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="home">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Compassionate Healthcare You Can Trust</h1>
+                        <p>General Practitioner | Contracted to All Medical AIDS | Accredited Dispensing Practice</p>
+                        
+                        <div class="accreditation-badges">
+                            <div class="badge">
+                                <i class="fas fa-user-md"></i>
+                                <span>General Practitioner</span>
+                            </div>
+                            <div class="badge">
+                                <i class="fas fa-handshake"></i>
+                                <span>Contracted to All Medical AIDS</span>
+                            </div>
+                            <div class="badge">
+                                <i class="fas fa-prescription-bottle-alt"></i>
+                                <span>Accredited Dispensing Practice</span>
+                            </div>
+                        </div>
+                        
+                        <div class="opening-hours">
+                            <i class="fas fa-clock"></i> OPEN 7 Days a Week
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 - Fixed Image -->
+                <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Professional Medical Services</h1>
+                        <p>From HIV Tests to Antenatal Care, we provide complete healthcare solutions for you and your family</p>
+                        
+                        <div class="accreditation-badges">
+                            <div class="badge">
+                                <i class="fas fa-virus"></i>
+                                <span>HIV Testing & Counseling</span>
+                            </div>
+                            <div class="badge">
+                                <i class="fas fa-baby"></i>
+                                <span>Antenatal Care</span>
+                            </div>
+                            <div class="badge">
+                                <i class="fas fa-stethoscope"></i>
+                                <span>Medical Circumcision</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <a href="#services" class="btn btn-accent btn-lg">
+                                <i class="fas fa-list"></i> View All Services
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Your Health, Our Priority</h1>
+                        <p>Contact us today for professional medical care in a comfortable and welcoming environment</p>
+                        
+                        <div class="contact-info" style="color: white; margin-top: 30px;">
+                            <div style="font-size: 1.5rem; margin-bottom: 15px;">
+                                <i class="fas fa-phone-alt"></i> +27604208383
+                            </div>
+                            <p style="font-size: 1.2rem;">Call us to schedule an appointment or walk in during our opening hours</p>
+                        </div>
+                        
+                        <div class="mt-3">
+                            <a href="#contact" class="btn btn-primary btn-lg">
+                                <i class="fas fa-map-marker-alt"></i> Find Our Location
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Main Website Content -->
+    <main id="mainWebsite">
+        <!-- Services Section -->
+        <section id="services">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Our Medical Services</span>
+                    <h2>Comprehensive Healthcare Solutions</h2>
+                    <p>We provide a wide range of medical services to meet your healthcare needs with professionalism and care.</p>
+                </div>
+                
+                <div class="services-grid">
+                    <!-- Services populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Doctor Section -->
+        <section id="doctors" style="background-color: var(--primary-light);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Meet Our Doctor</span>
+                    <h2>Experienced General Practitioner</h2>
+                    <p>Our qualified doctor provides compassionate care with years of experience in general practice.</p>
+                </div>
+                
+                <div class="doctors-grid">
+                    <div class="doctor-card">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Dr. Wilson" class="doctor-img">
+                        <div class="doctor-info">
+                            <h3>Dr. Wilson K.</h3>
+                            <div class="doctor-title">MBChB, General Practitioner</div>
+                            <div class="doctor-details">
+                                <i class="fas fa-briefcase-medical"></i>
+                                <span>15+ years experience in General Practice</span>
+                            </div>
+                            <div class="doctor-details">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Special interest in Family Medicine & Preventive Care</span>
+                            </div>
+                            <div class="doctor-details">
+                                <i class="fas fa-language"></i>
+                                <span>Fluent in English, Afrikaans & isiZulu</span>
+                            </div>
+                            <div class="doctor-details">
+                                <i class="fas fa-award"></i>
+                                <span>Contracted to All Major Medical AIDS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+                        Our doctor is committed to providing comprehensive healthcare services with a patient-centered approach. 
+                        With extensive experience in managing various health conditions and a focus on preventive care, 
+                        we ensure that each patient receives personalized attention and the highest standard of medical treatment.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Approach Section -->
+        <section id="about">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Why Choose Us</span>
+                    <h2>Our Patient-First Approach</h2>
+                    <p>At WK Surgery, we prioritize your health and wellbeing with compassionate, professional care.</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;">
+                        <div class="about-card" style="background-color: var(--white); padding: 30px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                            <div class="about-icon" style="width: 60px; height: 60px; background-color: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--primary); font-size: 24px;">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--dark);">Contracted to All Medical AIDS</h3>
+                            <p style="color: var(--gray);">We are contracted with all major medical aid schemes, making quality healthcare accessible and affordable for our patients.</p>
+                        </div>
+                        
+                        <div class="about-card" style="background-color: var(--white); padding: 30px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                            <div class="about-icon" style="width: 60px; height: 60px; background-color: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--primary); font-size: 24px;">
+                                <i class="fas fa-prescription-bottle-alt"></i>
+                            </div>
+                            <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--dark);">Accredited Dispensing Practice</h3>
+                            <p style="color: var(--gray);">Our on-site pharmacy allows for convenient medication dispensing, ensuring you receive your prescribed treatment immediately after consultation.</p>
+                        </div>
+                        
+                        <div class="about-card" style="background-color: var(--white); padding: 30px; border-radius: var(--border-radius); box-shadow: var(--shadow);">
+                            <div class="about-icon" style="width: 60px; height: 60px; background-color: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--primary); font-size: 24px;">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--dark);">Open 7 Days a Week</h3>
+                            <p style="color: var(--gray);">We understand that healthcare needs don't follow a 9-to-5 schedule. That's why we're open every day of the week for your convenience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointment CTA Section -->
+        <section style="background-color: var(--primary); color: white;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 style="color: white;">Ready to Schedule Your Visit?</h2>
+                    <p style="color: rgba(255,255,255,0.8); max-width: 700px; margin: 0 auto;">Book an appointment with our experienced medical team. We offer convenient scheduling and personalized care 7 days a week.</p>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="#" class="btn btn-accent btn-lg" id="midPageBookBtn" style="font-size: 1.1rem; padding: 15px 40px;">
+                        <i class="fas fa-calendar-plus"></i> Book Appointment Now
+                    </a>
+                    <a href="tel:+27604208383" class="btn btn-secondary btn-lg" style="background-color: white; color: var(--primary); margin-left: 15px;">
+                        <i class="fas fa-phone"></i> Call Now: +27604208383
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Patient Stories</span>
+                    <h2>What Our Patients Say</h2>
+                    <p>HIPAA-safe, anonymized testimonials from our patients about their experience at WK Surgery.</p>
+                </div>
+                
+                <div class="testimonials-slider">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The care I received at WK Surgery was exceptional. Dr. Wilson took the time to listen to all my concerns and explained everything clearly. The HIV testing was done professionally and confidentially."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Patient J.R.</h4>
+                                <p>HIV Testing Service</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <div class="testimonial-indicators" style="display: flex; justify-content: center; gap: 10px; margin-top: 30px;">
+                        <div class="indicator active" style="width: 12px; height: 12px; border-radius: 50%; background-color: var(--primary); cursor: pointer;"></div>
+                        <div class="indicator" style="width: 12px; height: 12px; border-radius: 50%; background-color: var(--gray-light); cursor: pointer;"></div>
+                        <div class="indicator" style="width: 12px; height: 12px; border-radius: 50%; background-color: var(--gray-light); cursor: pointer;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Common Questions</span>
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Find answers to common questions about our services, appointments, and policies.</p>
+                </div>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Are you contracted to medical aids?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we are contracted to all major medical aids in South Africa. Please bring your medical aid card and ID to your appointment for seamless billing.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What should I bring to my first visit?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Please bring your ID document, medical aid card (if applicable), and any previous medical records or test results. For chronic medication, bring your current prescription.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do I need an appointment or can I walk in?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept both appointments and walk-ins. However, we recommend booking an appointment to minimize your waiting time. We are open 7 days a week for your convenience.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is HIV testing confidential?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely. All HIV testing is conducted in private consultation rooms with strict confidentiality. We provide pre-test and post-test counseling regardless of the result.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you offer antenatal care from early pregnancy?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we provide comprehensive antenatal care from early pregnancy through to postnatal care. This includes regular check-ups, ultrasound scans, and birth planning.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" style="background-color: var(--primary-light);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Get In Touch</span>
+                    <h2>Contact Our Practice</h2>
+                    <p>We're here to answer your questions and help you schedule your appointment.</p>
+                </div>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Visit Our Practice</h3>
+                                <p>14 Hunter Street<br>2195, Yeoville<br>Johannesburg, South Africa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Call Us</h3>
+                                <p>Phone: +27604208383<br>Appointments: +27604208383<br>Emergency: 112</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Operating Hours</h3>
+                                <p>Monday - Sunday: 8:00 AM - 6:00 PM<br>Open 7 Days a Week<br>Public Holidays: 9:00 AM - 1:00 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Accreditation</h3>
+                                <p>General Practitioner<br>Contracted to All Medical AIDS<br>Accredited Dispensing Practice</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 25px; color: var(--dark);">Send a Secure Message</h3>
+                        <form id="contactForm" method="POST">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contactName">Full Name *</label>
+                                    <input type="text" id="contactName" name="name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactEmail">Email Address *</label>
+                                    <input type="email" id="contactEmail" name="email" class="form-control" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contactPhone">Phone Number *</label>
+                                    <input type="tel" id="contactPhone" name="phone" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactSubject">Subject</label>
+                                    <select id="contactSubject" name="subject" class="form-control">
+                                        <option value="">Select a subject</option>
+                                        <option value="appointment">Appointment Inquiry</option>
+                                        <option value="hiv-test">HIV Test Information</option>
+                                        <option value="circumcision">Circumcision Inquiry</option>
+                                        <option value="antenatal">Antenatal Care</option>
+                                        <option value="billing">Medical Aid/Billing</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactMessage">Message *</label>
+                                <textarea id="contactMessage" name="message" class="form-control" rows="5" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="form-check" style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 20px;">
+                                    <input type="checkbox" id="contactPrivacy" name="privacy" style="margin-top: 5px;" required>
+                                    <label for="contactPrivacy" style="font-size: 0.9rem; color: var(--gray);">I understand that this form is for non-urgent inquiries only. For medical emergencies, call 112. I agree to the privacy policy and HIPAA compliance.</label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Send Secure Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="mt-4" style="border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--shadow);">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3578.543458925788!2d28.059415315030536!3d-26.234517583418216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950e1c9a9d9a9b%3A0x1e950e1c9a9d9a9b!2sHunter%20St%2C%20Yeoville%2C%20Johannesburg%2C%202195!5e0!3m2!1sen!2sza!4v1629999400783!5m2!1sen!2sza" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Admin Dashboard -->
+    <section class="admin-section" id="adminDashboard">
+        <div class="container">
+            <div class="admin-container">
+                <div class="admin-sidebar">
+                    <h3>WK Surgery Admin</h3>
+                    <ul class="admin-nav">
+                        <li><a href="#" class="admin-nav-link active" data-panel="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                        <li><a href="#" class="admin-nav-link" data-panel="appointments"><i class="fas fa-calendar-check"></i> Appointments</a></li>
+                        <li><a href="#" class="admin-nav-link" data-panel="services"><i class="fas fa-stethoscope"></i> Services</a></li>
+                        <li><a href="#" class="admin-nav-link" data-panel="reminders"><i class="fas fa-bell"></i> Appointment Reminders</a></li>
+                        <li><a href="#" class="admin-nav-link" data-panel="testimonials"><i class="fas fa-comment-medical"></i> Testimonials</a></li>
+                        <li><a href="#" class="admin-nav-link" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    </ul>
+                </div>
+                
+                <div class="admin-main">
+                    <div class="admin-header">
+                        <h2>Admin Dashboard</h2>
+                        <div class="admin-actions">
+                            <button class="btn btn-primary btn-sm" id="saveChangesBtn">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Dashboard Panel -->
+                    <div class="admin-panel active" id="dashboardPanel">
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-number" id="totalAppointments">0</div>
+                                <div class="stat-label">Appointments This Week</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="pendingAppointments">0</div>
+                                <div class="stat-label">Pending Confirmations</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="totalServices">0</div>
+                                <div class="stat-label">Active Services</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-number" id="remindersSent">0</div>
+                                <div class="stat-label">Reminders Sent Today</div>
+                            </div>
+                        </div>
+                        
+                        <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--dark);">Recent Appointments</h3>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Patient</th>
+                                        <th>Date & Time</th>
+                                        <th>Service</th>
+                                        <th>Contact</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="appointmentsTableBody">
+                                    <!-- Appointments populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Appointments Panel -->
+                    <div class="admin-panel" id="appointmentsPanel">
+                        <h3>Appointment Management</h3>
+                        <div class="tab-nav">
+                            <button class="tab-btn active" data-tab="all">All Appointments</button>
+                            <button class="tab-btn" data-tab="today">Today</button>
+                            <button class="tab-btn" data-tab="upcoming">Upcoming</button>
+                            <button class="tab-btn" data-tab="pending">Pending</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="allTab">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Patient</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Service</th>
+                                            <th>Contact</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="allAppointmentsBody">
+                                        <!-- All appointments populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Services Panel -->
+                    <div class="admin-panel" id="servicesPanel">
+                        <div class="d-flex justify-between align-center mb-3">
+                            <h3>Services Management</h3>
+                            <button class="btn btn-primary" id="addServiceBtn">
+                                <i class="fas fa-plus"></i> Add New Service
+                            </button>
+                        </div>
+                        
+                        <!-- Service Editor (Hidden by default) -->
+                        <div class="service-editor d-none" id="serviceEditor">
+                            <h4 id="editorTitle">Add New Service</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="serviceName">Service Name *</label>
+                                    <input type="text" id="serviceName" class="form-control" placeholder="e.g., HIV Tests">
+                                </div>
+                                <div class="form-group">
+                                    <label for="serviceCategory">Category *</label>
+                                    <select id="serviceCategory" class="form-control">
+                                        <option value="Testing">Testing</option>
+                                        <option value="Procedure">Procedure</option>
+                                        <option value="Diagnostic">Diagnostic</option>
+                                        <option value="Women's Health">Women's Health</option>
+                                        <option value="Treatment">Treatment</option>
+                                        <option value="Consultation">Consultation</option>
+                                        <option value="General">General</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="serviceDescription">Description *</label>
+                                <textarea id="serviceDescription" class="form-control" rows="4" placeholder="Detailed description of the service..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="serviceIcon">Icon Class (Font Awesome)</label>
+                                <input type="text" id="serviceIcon" class="form-control" placeholder="fas fa-virus" value="fas fa-stethoscope">
+                                <small class="text-muted">Enter Font Awesome icon class (e.g., fas fa-virus, fas fa-baby)</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Service Image</label>
+                                <div class="image-preview" id="imagePreview">
+                                    <span>No image selected</span>
+                                </div>
+                                <div class="upload-container">
+                                    <div class="image-upload">
+                                        <input type="text" id="serviceImageUrl" class="form-control" placeholder="Image URL or file name">
+                                        <button type="button" class="btn btn-primary upload-btn" id="uploadImageBtn">
+                                            <i class="fas fa-upload"></i> Upload
+                                        </button>
+                                    </div>
+                                    <div class="file-name" id="fileNameDisplay">No file selected</div>
+                                </div>
+                                <small class="text-muted">Enter image URL or use upload button</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="d-flex align-center">
+                                    <input type="checkbox" id="serviceActive" checked>
+                                    <span style="margin-left: 10px;">Active Service (Visible on website)</span>
+                                </label>
+                            </div>
+                            
+                            <div class="d-flex justify-between mt-4">
+                                <button class="btn btn-secondary" id="cancelServiceBtn">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                                <button class="btn btn-primary" id="saveServiceBtn">
+                                    <i class="fas fa-save"></i> Save Service
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Service Name</th>
+                                        <th>Description</th>
+                                        <th>Category</th>
+                                        <th>Image</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="servicesTableBody">
+                                    <!-- Services populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Reminders Panel -->
+                    <div class="admin-panel" id="remindersPanel">
+                        <h3>Appointment Reminder System</h3>
+                        <p>Configure automated reminders sent to patients before their appointments.</p>
+                        
+                        <div class="reminder-settings">
+                            <h4><i class="fas fa-cog"></i> Reminder Settings</h4>
+                            
+                            <div class="reminder-options">
+                                <div class="reminder-option">
+                                    <h5><i class="fas fa-envelope"></i> Email Reminders (Gmail)</h5>
+                                    <p>Send email reminders to patients before their appointments via Gmail.</p>
+                                    <label class="switch">
+                                        <input type="checkbox" id="emailRemindersToggle" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <div class="mt-2">
+                                        <label>Send reminder:</label>
+                                        <select class="form-control mt-1" id="emailTiming">
+                                            <option value="24">24 hours before</option>
+                                            <option value="48">48 hours before</option>
+                                            <option value="72">72 hours before</option>
+                                            <option value="168">1 week before</option>
+                                        </select>
+                                    </div>
+                                    <div class="reminder-test-buttons">
+                                        <button class="btn btn-primary btn-sm" id="testEmailBtn">
+                                            <i class="fas fa-envelope"></i> Test Email
+                                        </button>
+                                        <button class="btn btn-secondary btn-sm" id="configureGmailBtn">
+                                            <i class="fas fa-cog"></i> Configure
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="reminder-option">
+                                    <h5><i class="fab fa-whatsapp"></i> SMS/WhatsApp Reminders</h5>
+                                    <p>Send SMS/WhatsApp reminders to patients before their appointments.</p>
+                                    <label class="switch">
+                                        <input type="checkbox" id="smsRemindersToggle" checked>
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <div class="mt-2">
+                                        <label>Send reminder:</label>
+                                        <select class="form-control mt-1" id="smsTiming">
+                                            <option value="24">24 hours before</option>
+                                            <option value="48">48 hours before</option>
+                                        </select>
+                                    </div>
+                                    <div class="reminder-test-buttons">
+                                        <button class="btn btn-primary btn-sm" id="testSMSBtn">
+                                            <i class="fas fa-sms"></i> Test SMS
+                                        </button>
+                                        <button class="btn btn-success btn-sm" id="testWhatsAppBtn">
+                                            <i class="fab fa-whatsapp"></i> Test WhatsApp
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h5><i class="fas fa-history"></i> Reminder History</h5>
+                                <div class="table-responsive">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date Sent</th>
+                                                <th>Patient</th>
+                                                <th>Appointment</th>
+                                                <th>Reminder Type</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="reminderHistoryBody">
+                                            <!-- Reminder history populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <button class="btn btn-primary" id="sendTestReminder">
+                                    <i class="fas fa-paper-plane"></i> Send Test Reminder
+                                </button>
+                                <button class="btn btn-secondary" id="saveReminderSettings">
+                                    <i class="fas fa-save"></i> Save Reminder Settings
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonials Panel -->
+                    <div class="admin-panel" id="testimonialsPanel">
+                        <div class="d-flex justify-between align-center mb-3">
+                            <h3>Testimonials Management</h3>
+                            <button class="btn btn-primary" id="addTestimonialBtn">
+                                <i class="fas fa-plus"></i> Add Testimonial
+                            </button>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Patient Initials</th>
+                                        <th>Testimonial</th>
+                                        <th>Rating</th>
+                                        <th>Service</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="testimonialsTableBody">
+                                    <!-- Testimonials populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <div class="logo-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <div class="logo-text" style="color: white;">WK <span style="color: var(--primary-light);">Surgery</span></div>
+                    </div>
+                    <p style="color: #b0b7c3; margin-bottom: 20px;">General Practitioner | Contracted to All Medical AIDS | Accredited Dispensing Practice. Open 7 days a week for your healthcare needs.</p>
+                    <div class="contact-info" style="color: #b0b7c3;">
+                        <p><i class="fas fa-phone-alt"></i> +27604208383</p>
+                        <p><i class="fas fa-clock"></i> Open 7 Days a Week: 8AM-6PM</p>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#doctors">Our Doctor</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#testimonials">Patient Stories</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">HIV Tests</a></li>
+                        <li><a href="#services">Circumcision</a></li>
+                        <li><a href="#services">Sonar/Ultrasound</a></li>
+                        <li><a href="#services">Antenatal Care</a></li>
+                        <li><a href="#services">BCO + B12 Injections</a></li>
+                        <li><a href="#services">General Consultations</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal & Privacy</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" id="privacyPolicyLink">Privacy Policy</a></li>
+                        <li><a href="#" id="termsServiceLink">Terms of Service</a></li>
+                        <li><a href="#" id="hipaaLink">HIPAA Compliance</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="admin-login-link">
+                <a href="#" id="adminLoginLink">
+                    <i class="fas fa-lock"></i>
+                </a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 WK Surgery. All rights reserved. | General Practitioner Practice</p>
+                <p style="font-size: 0.8rem; margin-top: 10px;">Accredited Dispensing Practice | Contracted to All Medical AIDS | In case of medical emergency, call 112.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Book a Medical Appointment</h3>
+                <button class="close-modal" id="closeBookingModal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="booking-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-icon">1</div>
+                        <div class="step-label">Select Service</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-icon">2</div>
+                        <div class="step-label">Choose Date & Time</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-icon">3</div>
+                        <div class="step-label">Your Details</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-icon">4</div>
+                        <div class="step-label">Confirmation</div>
+                    </div>
+                </div>
+                
+                <form id="bookingForm">
+                    <input type="hidden" name="_subject" value="New Appointment Booking - WK Surgery">
+                    <input type="hidden" name="_replyto" id="hiddenEmail">
+                    <input type="hidden" name="_next" value="#">
+                    
+                    <!-- Step 1: Service Selection -->
+                    <div class="booking-form-page active" data-page="1">
+                        <h4 style="margin-bottom: 20px; color: var(--dark);">Select a Medical Service</h4>
+                        <p style="margin-bottom: 20px; color: var(--gray);">Choose the service you require from our comprehensive healthcare options.</p>
+                        
+                        <div class="services-selection" id="bookingServices">
+                            <!-- Services for booking populated by JavaScript -->
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="nextStep1">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Date & Time Selection -->
+                    <div class="booking-form-page" data-page="2">
+                        <h4 style="margin-bottom: 20px; color: var(--dark);">Choose Date & Time</h4>
+                        <p style="margin-bottom: 20px; color: var(--gray);">Select a convenient date and time for your appointment. We are open 7 days a week.</p>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookingDate">Appointment Date *</label>
+                                <input type="date" id="bookingDate" name="appointment_date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingTime">Preferred Time *</label>
+                                <select id="bookingTime" name="appointment_time" class="form-control" required>
+                                    <option value="">Select a time slot</option>
+                                    <option value="08:00">08:00 AM</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">01:00 PM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="17:00">05:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Preferred Reminder Method</label>
+                            <div style="display: flex; gap: 20px; margin-top: 10px;">
+                                <div class="form-check">
+                                    <input type="radio" id="reminderSMS" name="reminder_method" value="sms" checked>
+                                    <label for="reminderSMS">SMS</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" id="reminderEmail" name="reminder_method" value="email">
+                                    <label for="reminderEmail">Email</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" id="reminderBoth" name="reminder_method" value="both">
+                                    <label for="reminderBoth">Both</label>
+                                </div>
+                            </div>
+                            <small class="text-muted">We'll send you a reminder before your appointment</small>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="prevStep2"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="button" class="btn btn-primary" id="nextStep2">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Patient Details -->
+                    <div class="booking-form-page" data-page="3">
+                        <h4 style="margin-bottom: 20px; color: var(--dark);">Your Contact Information</h4>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="patientName">Full Name *</label>
+                                <input type="text" id="patientName" name="patient_name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="patientEmail">Email Address *</label>
+                                <input type="email" id="patientEmail" name="patient_email" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="patientPhone">Phone Number *</label>
+                                <input type="tel" id="patientPhone" name="patient_phone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="patientID">ID Number</label>
+                                <input type="text" id="patientID" name="patient_id" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="medicalAid">Medical Aid Name</label>
+                                <input type="text" id="medicalAid" name="medical_aid" class="form-control" placeholder="If applicable">
+                            </div>
+                            <div class="form-group">
+                                <label for="medicalAidNumber">Medical Aid Number</label>
+                                <input type="text" id="medicalAidNumber" name="medical_aid_number" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="patientNotes">Medical Notes (Optional)</label>
+                            <textarea id="patientNotes" name="medical_notes" class="form-control" rows="3" placeholder="Briefly describe the reason for your visit or any specific concerns..."></textarea>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="prevStep3"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="button" class="btn btn-primary" id="nextStep3">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4: Confirmation -->
+                    <div class="booking-form-page" data-page="4">
+                        <h4 style="margin-bottom: 20px; color: var(--dark);">Confirm Your Appointment</h4>
+                        
+                        <div class="booking-summary">
+                            <h5 style="margin-bottom: 15px; color: var(--dark);">Appointment Summary</h5>
+                            <div class="summary-item">
+                                <span>Service:</span>
+                                <span id="summaryService">-</span>
+                                <input type="hidden" name="service" id="hiddenService">
+                            </div>
+                            <div class="summary-item">
+                                <span>Date:</span>
+                                <span id="summaryDate">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Time:</span>
+                                <span id="summaryTime">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Patient:</span>
+                                <span id="summaryPatient">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Contact:</span>
+                                <span id="summaryContact">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Reminders:</span>
+                                <span id="summaryReminders">SMS</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <div class="form-check">
+                                <input type="checkbox" id="bookingPrivacy" name="privacy_agreement" required>
+                                <label for="bookingPrivacy">I agree to the privacy policy and understand that this appointment request is subject to confirmation by the practice. I consent to receive appointment reminders via my chosen method.</label>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="prevStep4"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="submit" class="btn btn-primary" id="submitBooking">
+                                <i class="fas fa-calendar-check"></i> Confirm Booking
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3>Appointment Request Submitted</h3>
+                <button class="close-modal" id="closeSuccessModal">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <div style="font-size: 60px; color: var(--success); margin-bottom: 20px;">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h4 style="margin-bottom: 15px; color: var(--dark);">Thank You!</h4>
+                <p style="margin-bottom: 20px; color: var(--gray);">Your appointment request has been submitted successfully. Our team will contact you within 24 hours to confirm your appointment details.</p>
+                <p style="margin-bottom: 25px; color: var(--gray);">You will receive an appointment reminder via your chosen method before your scheduled visit.</p>
+                <button class="btn btn-primary" id="closeSuccessBtn">Return to Website</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-form">
+            <h3>Admin Login</h3>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                
+                <div class="login-error" id="loginError">
+                    Invalid username or password. Please try again.
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                
+                <div class="text-center mt-3">
+                    <small style="color: var(--gray);">Default credentials: admin / password123</small>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Legal Documents Modals -->
+    <div class="modal" id="privacyPolicyModal">
+        <div class="modal-content" style="max-width: 800px; max-height: 90vh;">
+            <div class="modal-header">
+                <h3>Privacy Policy</h3>
+                <button class="close-modal" data-close="privacyPolicyModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>WK Surgery Privacy Policy</h4>
+                <p><strong>Last Updated: January 2023</strong></p>
+                
+                <h5>1. Introduction</h5>
+                <p>WK Surgery ("we", "our", "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
+                
+                <h5>2. Information We Collect</h5>
+                <p>We may collect personal information that you voluntarily provide to us when you:</p>
+                <ul>
+                    <li>Book an appointment</li>
+                    <li>Complete contact forms</li>
+                    <li>Register for our services</li>
+                    <li>Contact us via email or phone</li>
+                </ul>
+                
+                <h5>3. How We Use Your Information</h5>
+                <p>We use the information we collect to:</p>
+                <ul>
+                    <li>Schedule and manage appointments</li>
+                    <li>Provide medical services</li>
+                    <li>Send appointment reminders</li>
+                    <li>Respond to your inquiries</li>
+                    <li>Improve our services</li>
+                </ul>
+                
+                <h5>4. Data Security</h5>
+                <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                
+                <h5>5. Your Rights</h5>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access your personal information</li>
+                    <li>Correct inaccurate information</li>
+                    <li>Request deletion of your information</li>
+                    <li>Object to processing of your information</li>
+                </ul>
+                
+                <h5>6. Contact Us</h5>
+                <p>If you have questions about this Privacy Policy, please contact us at:</p>
+                <p>WK Surgery<br>14 Hunter Street, Yeoville<br>Johannesburg, 2195<br>Phone: +27604208383<br>Email: info@wksurgery.com</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-close="privacyPolicyModal">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="termsServiceModal">
+        <div class="modal-content" style="max-width: 800px; max-height: 90vh;">
+            <div class="modal-header">
+                <h3>Terms of Service</h3>
+                <button class="close-modal" data-close="termsServiceModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>WK Surgery Terms of Service</h4>
+                <p><strong>Last Updated: January 2023</strong></p>
+                
+                <h5>1. Acceptance of Terms</h5>
+                <p>By accessing and using the WK Surgery website and services, you accept and agree to be bound by these Terms of Service.</p>
+                
+                <h5>2. Medical Services</h5>
+                <p>WK Surgery provides general practitioner services including but not limited to:</p>
+                <ul>
+                    <li>HIV Testing and Counseling</li>
+                    <li>Medical Circumcision</li>
+                    <li>Ultrasound Services</li>
+                    <li>Antenatal Care</li>
+                    <li>General Consultations</li>
+                </ul>
+                
+                <h5>3. Appointments</h5>
+                <p>Appointments can be scheduled online, by phone, or in person. We require:</p>
+                <ul>
+                    <li>24-hour notice for cancellations</li>
+                    <li>Valid identification for all visits</li>
+                    <li>Medical aid information if applicable</li>
+                </ul>
+                
+                <h5>4. Payment and Billing</h5>
+                <p>We are contracted to all major medical aids. Patients are responsible for:</p>
+                <ul>
+                    <li>Co-payments as per medical aid rules</li>
+                    <li>Payment for non-covered services</li>
+                    <li>Providing valid medical aid details</li>
+                </ul>
+                
+                <h5>5. Limitation of Liability</h5>
+                <p>WK Surgery shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our services.</p>
+                
+                <h5>6. Changes to Terms</h5>
+                <p>We reserve the right to modify these terms at any time. Continued use of our services constitutes acceptance of modified terms.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-close="termsServiceModal">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="hipaaModal">
+        <div class="modal-content" style="max-width: 800px; max-height: 90vh;">
+            <div class="modal-header">
+                <h3>HIPAA Compliance Statement</h3>
+                <button class="close-modal" data-close="hipaaModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h4>Health Insurance Portability and Accountability Act (HIPAA) Compliance</h4>
+                <p><strong>Last Updated: January 2023</strong></p>
+                
+                <h5>1. HIPAA Compliance</h5>
+                <p>WK Surgery is committed to complying with all applicable provisions of the Health Insurance Portability and Accountability Act (HIPAA) and related regulations.</p>
+                
+                <h5>2. Protected Health Information (PHI)</h5>
+                <p>We safeguard all Protected Health Information (PHI) including:</p>
+                <ul>
+                    <li>Medical records and histories</li>
+                    <li>Test results and diagnoses</li>
+                    <li>Treatment information</li>
+                    <li>Billing and payment information</li>
+                    <li>Personal identifiers</li>
+                </ul>
+                
+                <h5>3. Privacy Practices</h5>
+                <p>We implement strict privacy practices including:</p>
+                <ul>
+                    <li>Secure storage of medical records</li>
+                    <li>Limited access to patient information</li>
+                    <li>Encrypted electronic communications</li>
+                    <li>Regular staff training on privacy</li>
+                </ul>
+                
+                <h5>4. Patient Rights</h5>
+                <p>Under HIPAA, you have the right to:</p>
+                <ul>
+                    <li>Access your medical records</li>
+                    <li>Request corrections to your records</li>
+                    <li>Receive an accounting of disclosures</li>
+                    <li>Request confidential communications</li>
+                    <li>File a privacy complaint</li>
+                </ul>
+                
+                <h5>5. Security Measures</h5>
+                <p>We implement physical, technical, and administrative safeguards including:</p>
+                <ul>
+                    <li>Secure facility access controls</li>
+                    <li>Encrypted data transmission</li>
+                    <li>Regular security risk assessments</li>
+                    <li>Incident response procedures</li>
+                </ul>
+                
+                <h5>6. Breach Notification</h5>
+                <p>In the event of a breach of unsecured PHI, we will notify affected individuals as required by HIPAA regulations.</p>
+                
+                <h5>7. Contact Information</h5>
+                <p>For questions about our HIPAA compliance or privacy practices, contact our Privacy Officer at:</p>
+                <p>WK Surgery Privacy Officer<br>14 Hunter Street, Yeoville<br>Johannesburg, 2195<br>Phone: +27604208383</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-close="hipaaModal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <div id="notificationMessage"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // Data Store for the application
+        const appData = {
+            services: [
+                {
+                    id: 1,
+                    name: "HIV Tests",
+                    description: "Confidential and accurate HIV testing with pre-test and post-test counseling. We provide rapid tests with results in minutes, ensuring privacy and professional support throughout the process.",
+                    category: "Testing",
+                    icon: "fas fa-virus",
+                    image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    active: true
+                },
+                {
+                    id: 2,
+                    name: "Circumcision",
+                    description: "Safe and professional medical circumcision performed by experienced practitioners using sterile techniques. We prioritize patient comfort and follow strict hygiene protocols for optimal healing.",
+                    category: "Procedure",
+                    icon: "fas fa-cut",
+                    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    active: true
+                },
+                {
+                    id: 3,
+                    name: "Sonar (Ultrasound)",
+                    description: "High-quality ultrasound scanning for diagnostic purposes including pregnancy monitoring, abdominal examinations, and soft tissue assessments. Our modern equipment provides clear imaging for accurate diagnosis.",
+                    category: "Diagnostic",
+                    icon: "fas fa-procedures",
+                    image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    active: true
+                },
+                {
+                    id: 4,
+                    name: "Antenatal Care",
+                    description: "Comprehensive prenatal care for expectant mothers, including regular check-ups, ultrasound scans, nutritional guidance, and birth planning. We support you throughout your pregnancy journey.",
+                    category: "Women's Health",
+                    icon: "fas fa-baby",
+                    image: "https://images.unsplash.com/photo-1517120026326-d87759a7b63b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    active: true
+                },
+                {
+                    id: 5,
+                    name: "BCO + B12 Injections",
+                    description: "Vitamin B complex and B12 injections for energy boosting, anemia treatment, and overall wellness. Administered by trained medical staff in a clean and safe environment.",
+                    category: "Treatment",
+                    icon: "fas fa-syringe",
+                    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    active: true
+                },
+                {
+                    id: 6,
+                    name: "General Consultations",
+                    description: "Comprehensive medical consultations for diagnosis, treatment, and management of various health conditions. Our GP provides personalized care and treatment plans for your specific needs.",
+                    category: "Consultation",
+                    icon: "fas fa-user-md",
+                    image: "https://images.unsplash.com/photo-1586773860418-dc22f8b874bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                    active: true
+                }
+            ],
+            testimonials: [
+                {
+                    id: 1,
+                    patient: "Patient J.R.",
+                    text: "The care I received at WK Surgery was exceptional. Dr. Wilson took the time to listen to all my concerns and explained everything clearly. The HIV testing was done professionally and confidentially.",
+                    rating: 5,
+                    service: "HIV Testing Service",
+                    active: true
+                },
+                {
+                    id: 2,
+                    patient: "Patient M.K.",
+                    text: "After struggling with low energy for months, the B12 injections at WK Surgery made a significant difference. The staff is professional and caring, and the service is excellent.",
+                    rating: 5,
+                    service: "BCO + B12 Injections",
+                    active: true
+                },
+                {
+                    id: 3,
+                    patient: "Patient L.S.",
+                    text: "The antenatal care I received was comprehensive and reassuring. The ultrasound was clear and the doctor took time to explain everything. Highly recommended for expectant mothers.",
+                    rating: 5,
+                    service: "Antenatal Care",
+                    active: true
+                }
+            ],
+            appointments: [],
+            reminders: [],
+            reminderSettings: {
+                emailEnabled: true,
+                emailTiming: 24,
+                smsEnabled: true,
+                smsTiming: 24
+            }
+        };
+
+        // Admin credentials
+        const adminCredentials = {
+            username: "admin",
+            password: "password123"
+        };
+
+        // Current booking data
+        let currentBooking = {
+            service: null,
+            date: null,
+            time: null,
+            patientName: null,
+            patientEmail: null,
+            patientPhone: null,
+            reminderMethod: "sms"
+        };
+
+        // Service editor state
+        let currentServiceEditId = null;
+
+        // DOM Elements
+        const mainWebsite = document.getElementById('mainWebsite');
+        const adminDashboard = document.getElementById('adminDashboard');
+        const bookAppointmentBtn = document.getElementById('bookAppointmentBtn');
+        const midPageBookBtn = document.getElementById('midPageBookBtn');
+        const bookingModal = document.getElementById('bookingModal');
+        const closeBookingModal = document.getElementById('closeBookingModal');
+        const successModal = document.getElementById('successModal');
+        const closeSuccessModal = document.getElementById('closeSuccessModal');
+        const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const adminLoginLink = document.getElementById('adminLoginLink');
+        const loginModal = document.getElementById('loginModal');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const themeToggle = document.getElementById('themeToggle');
+        const notification = document.getElementById('notification');
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Swiper slider
+            const swiper = new Swiper('.swiper', {
+                direction: 'horizontal',
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+            
+            // Populate services on website
+            renderServices();
+            
+            // Populate booking services
+            populateBookingServices();
+            
+            // Populate admin tables
+            populateAppointmentsTable();
+            populateServicesTable();
+            populateTestimonialsTable();
+            populateReminderHistory();
+            
+            // Set minimum date for booking to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('bookingDate').min = today;
+            document.getElementById('bookingDate').value = today;
+            
+            // Setup event listeners
+            setupEventListeners();
+            
+            // Setup FAQ toggle
+            setupFAQs();
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                enableDarkMode();
+            }
+            
+            // Load reminder settings
+            loadReminderSettings();
+        });
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Theme toggle
+            themeToggle.addEventListener('click', toggleTheme);
+            
+            // Booking buttons
+            const bookingButtons = [bookAppointmentBtn, midPageBookBtn];
+            bookingButtons.forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        bookingModal.classList.add('active');
+                    });
+                }
+            });
+            
+            // Close booking modal
+            closeBookingModal.addEventListener('click', function() {
+                bookingModal.classList.remove('active');
+            });
+            
+            // Close success modal
+            closeSuccessModal.addEventListener('click', function() {
+                successModal.classList.remove('active');
+            });
+            
+            closeSuccessBtn.addEventListener('click', function() {
+                successModal.classList.remove('active');
+                // Scroll to top after closing success modal
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            });
+            
+            // Mobile menu
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('d-none');
+            });
+            
+            // Admin login link
+            adminLoginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginModal.classList.add('active');
+            });
+            
+            // Logout button
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                adminDashboard.style.display = 'none';
+                mainWebsite.style.display = 'block';
+                loginModal.classList.remove('active');
+                showNotification('Successfully logged out');
+            });
+            
+            // Login form submission
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const username = document.getElementById('username').value;
+                    const password = document.getElementById('password').value;
+                    const loginError = document.getElementById('loginError');
+                    
+                    if (username === adminCredentials.username && password === adminCredentials.password) {
+                        // Successful login
+                        loginModal.classList.remove('active');
+                        mainWebsite.style.display = 'none';
+                        adminDashboard.style.display = 'block';
+                        loginError.style.display = 'none';
+                        loginForm.reset();
+                        showNotification('Successfully logged in as admin');
+                    } else {
+                        // Failed login
+                        loginError.style.display = 'block';
+                    }
+                });
+            }
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Create form data
+                    const formData = new FormData(this);
+                    
+                    try {
+                        // Send to Formspree
+                        const response = await fetch('https://formspree.io/f/maqwwvjw', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            showNotification('Message sent successfully! We will respond within 24-48 hours.');
+                            contactForm.reset();
+                        } else {
+                            showNotification('There was an error sending your message. Please try again.', 'error');
+                        }
+                    } catch (error) {
+                        showNotification('Network error. Please try again.', 'error');
+                    }
+                });
+            }
+            
+            // Legal document links
+            document.getElementById('privacyPolicyLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('privacyPolicyModal').classList.add('active');
+            });
+            
+            document.getElementById('termsServiceLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('termsServiceModal').classList.add('active');
+            });
+            
+            document.getElementById('hipaaLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('hipaaModal').classList.add('active');
+            });
+            
+            // Close legal modals
+            document.querySelectorAll('[data-close]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modalId = this.dataset.close;
+                    document.getElementById(modalId).classList.remove('active');
+                });
+            });
+            
+            // Admin navigation
+            document.querySelectorAll('.admin-nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.admin-nav-link').forEach(l => {
+                        l.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Show corresponding panel
+                    const panelId = this.dataset.panel + 'Panel';
+                    document.querySelectorAll('.admin-panel').forEach(panel => {
+                        panel.classList.remove('active');
+                    });
+                    document.getElementById(panelId).classList.add('active');
+                });
+            });
+            
+            // Admin tabs
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.dataset.tab + 'Tab';
+                    
+                    // Update active tab button
+                    this.parentElement.querySelectorAll('.tab-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Show corresponding tab content
+                    this.closest('.admin-panel').querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Save reminder settings
+            const saveReminderSettingsBtn = document.getElementById('saveReminderSettings');
+            if (saveReminderSettingsBtn) {
+                saveReminderSettingsBtn.addEventListener('click', function() {
+                    saveReminderSettings();
+                    showNotification('Reminder settings saved successfully.');
+                });
+            }
+            
+            // Send test reminder
+            const sendTestReminderBtn = document.getElementById('sendTestReminder');
+            if (sendTestReminderBtn) {
+                sendTestReminderBtn.addEventListener('click', function() {
+                    showNotification('Test reminder sent successfully. In a production environment, this would trigger actual SMS/email reminders.');
+                });
+            }
+            
+            // Test email button
+            const testEmailBtn = document.getElementById('testEmailBtn');
+            if (testEmailBtn) {
+                testEmailBtn.addEventListener('click', function() {
+                    showNotification('Test email sent via Gmail. In production, this would send actual email reminders.');
+                });
+            }
+            
+            // Test SMS button
+            const testSMSBtn = document.getElementById('testSMSBtn');
+            if (testSMSBtn) {
+                testSMSBtn.addEventListener('click', function() {
+                    showNotification('Test SMS sent. In production, this would send actual SMS reminders.');
+                });
+            }
+            
+            // Test WhatsApp button
+            const testWhatsAppBtn = document.getElementById('testWhatsAppBtn');
+            if (testWhatsAppBtn) {
+                testWhatsAppBtn.addEventListener('click', function() {
+                    showNotification('Test WhatsApp message sent. In production, this would send actual WhatsApp reminders.');
+                });
+            }
+            
+            // Configure Gmail button
+            const configureGmailBtn = document.getElementById('configureGmailBtn');
+            if (configureGmailBtn) {
+                configureGmailBtn.addEventListener('click', function() {
+                    showNotification('Gmail configuration opened. In production, this would connect to Gmail API.');
+                });
+            }
+            
+            // Add service button
+            const addServiceBtn = document.getElementById('addServiceBtn');
+            if (addServiceBtn) {
+                addServiceBtn.addEventListener('click', function() {
+                    showServiceEditor(null);
+                });
+            }
+            
+            // Cancel service editor
+            const cancelServiceBtn = document.getElementById('cancelServiceBtn');
+            if (cancelServiceBtn) {
+                cancelServiceBtn.addEventListener('click', function() {
+                    hideServiceEditor();
+                });
+            }
+            
+            // Save service button
+            const saveServiceBtn = document.getElementById('saveServiceBtn');
+            if (saveServiceBtn) {
+                saveServiceBtn.addEventListener('click', function() {
+                    saveService();
+                });
+            }
+            
+            // Upload image button - FIXED VERSION
+            const uploadImageBtn = document.getElementById('uploadImageBtn');
+            if (uploadImageBtn) {
+                uploadImageBtn.addEventListener('click', function() {
+                    // Create a file input element
+                    const fileInput = document.createElement('input');
+                    fileInput.type = 'file';
+                    fileInput.accept = 'image/*';
+                    
+                    fileInput.onchange = function(e) {
+                        const file = e.target.files[0];
+                        if (file) {
+                            // In a real app, you would upload the file to a server
+                            // For demo, we'll create a mock URL and show the filename
+                            const fileName = file.name;
+                            const fileDisplay = document.getElementById('fileNameDisplay');
+                            const imageUrlInput = document.getElementById('serviceImageUrl');
+                            
+                            // Show filename
+                            fileDisplay.textContent = fileName;
+                            
+                            // Create a mock URL for demo (in production, this would be the actual uploaded URL)
+                            const mockUrl = `https://example.com/uploads/${Date.now()}_${fileName}`;
+                            imageUrlInput.value = mockUrl;
+                            
+                            // For demo, use a placeholder image
+                            updateImagePreview('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+                            
+                            showNotification(`File "${fileName}" uploaded successfully (demo mode)`);
+                        }
+                    };
+                    
+                    // Trigger the file input click
+                    fileInput.click();
+                });
+            }
+            
+            // Image URL input change
+            const serviceImageUrl = document.getElementById('serviceImageUrl');
+            if (serviceImageUrl) {
+                serviceImageUrl.addEventListener('change', function() {
+                    if (this.value) {
+                        updateImagePreview(this.value);
+                    }
+                });
+            }
+            
+            // Add testimonial button
+            const addTestimonialBtn = document.getElementById('addTestimonialBtn');
+            if (addTestimonialBtn) {
+                addTestimonialBtn.addEventListener('click', function() {
+                    const newTestimonial = {
+                        id: appData.testimonials.length + 1,
+                        patient: "New Patient",
+                        text: "Testimonial text goes here...",
+                        rating: 5,
+                        service: "General Consultations",
+                        active: false
+                    };
+                    
+                    appData.testimonials.push(newTestimonial);
+                    populateTestimonialsTable();
+                    showNotification('New testimonial added. You can now edit and approve it.');
+                });
+            }
+            
+            // Save changes button
+            const saveChangesBtn = document.getElementById('saveChangesBtn');
+            if (saveChangesBtn) {
+                saveChangesBtn.addEventListener('click', function() {
+                    showNotification('All changes have been saved successfully.');
+                });
+            }
+            
+            // Booking form steps navigation
+            setupBookingSteps();
+            
+            // Booking form submission
+            const bookingForm = document.getElementById('bookingForm');
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    // Set the hidden email field
+                    document.getElementById('hiddenEmail').value = currentBooking.patientEmail;
+                    document.getElementById('hiddenService').value = currentBooking.service;
+                    
+                    try {
+                        // Send to Formspree
+                        const formData = new FormData(this);
+                        const response = await fetch('https://formspree.io/f/maqwwvjw', {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+                        
+                        if (response.ok) {
+                            // Create new appointment
+                            const newAppointment = {
+                                id: appData.appointments.length + 1001,
+                                patientName: currentBooking.patientName,
+                                patientPhone: currentBooking.patientPhone,
+                                patientEmail: currentBooking.patientEmail,
+                                date: currentBooking.date,
+                                time: currentBooking.time,
+                                service: currentBooking.service,
+                                status: 'pending',
+                                created: new Date().toISOString()
+                            };
+                            
+                            // Add to appointments
+                            appData.appointments.push(newAppointment);
+                            
+                            // Create reminder record
+                            const newReminder = {
+                                id: appData.reminders.length + 2001,
+                                appointmentId: newAppointment.id,
+                                patientName: currentBooking.patientName,
+                                type: currentBooking.reminderMethod === 'both' ? 'email & sms' : currentBooking.reminderMethod,
+                                sentDate: new Date().toISOString().split('T')[0],
+                                status: 'scheduled'
+                            };
+                            
+                            appData.reminders.push(newReminder);
+                            
+                            // Update admin tables
+                            populateAppointmentsTable();
+                            populateReminderHistory();
+                            
+                            // Show success modal
+                            bookingModal.classList.remove('active');
+                            successModal.classList.add('active');
+                            
+                            // Reset form
+                            bookingForm.reset();
+                            currentBooking = {
+                                service: null,
+                                date: null,
+                                time: null,
+                                patientName: null,
+                                patientEmail: null,
+                                patientPhone: null,
+                                reminderMethod: "sms"
+                            };
+                            
+                            // Reset steps
+                            resetBookingSteps();
+                            
+                            // Reset selections
+                            document.querySelectorAll('#bookingServices .time-slot').forEach(opt => {
+                                opt.classList.remove('selected');
+                            });
+                            
+                            // Reset summary
+                            document.getElementById('summaryService').textContent = '-';
+                            document.getElementById('summaryDate').textContent = '-';
+                            document.getElementById('summaryTime').textContent = '-';
+                            document.getElementById('summaryPatient').textContent = '-';
+                            document.getElementById('summaryContact').textContent = '-';
+                            document.getElementById('summaryReminders').textContent = 'SMS';
+                            
+                            // Reset date to today
+                            const today = new Date().toISOString().split('T')[0];
+                            document.getElementById('bookingDate').value = today;
+                            
+                            showNotification('Appointment submitted successfully!');
+                        } else {
+                            showNotification('There was an error submitting your appointment. Please try again.', 'error');
+                        }
+                    } catch (error) {
+                        showNotification('Network error. Please try again.', 'error');
+                    }
+                });
+            }
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            if (document.body.classList.contains('dark-mode')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        }
+
+        function enableDarkMode() {
+            document.body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            localStorage.setItem('theme', 'dark');
+        }
+
+        function disableDarkMode() {
+            document.body.classList.remove('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            localStorage.setItem('theme', 'light');
+        }
+
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const messageEl = document.getElementById('notificationMessage');
+            
+            // Set message and icon based on type
+            messageEl.textContent = message;
+            if (type === 'error') {
+                notification.style.backgroundColor = 'var(--danger)';
+                notification.querySelector('i').className = 'fas fa-exclamation-circle';
+            } else {
+                notification.style.backgroundColor = 'var(--success)';
+                notification.querySelector('i').className = 'fas fa-check-circle';
+            }
+            
+            notification.classList.add('show');
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+
+        // Setup FAQ toggle
+        function setupFAQs() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', function() {
+                    item.classList.toggle('active');
+                });
+            });
+        }
+
+        // Render services on the website
+        function renderServices() {
+            const servicesGrid = document.querySelector('.services-grid');
+            if (!servicesGrid) return;
+            
+            servicesGrid.innerHTML = '';
+            
+            appData.services.filter(service => service.active).forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                serviceCard.innerHTML = `
+                    <img src="${service.image}" alt="${service.name}" class="service-image">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="${service.icon}"></i>
+                        </div>
+                        <h3>${service.name}</h3>
+                        <p>${service.description}</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Professional medical staff</li>
+                            <li><i class="fas fa-check-circle"></i> Confidential and private</li>
+                            <li><i class="fas fa-check-circle"></i> Modern equipment and facilities</li>
+                            <li><i class="fas fa-check-circle"></i> Accepts all medical aids</li>
+                        </ul>
+                    </div>
+                `;
+                servicesGrid.appendChild(serviceCard);
+            });
+        }
+
+        // Populate booking services
+        function populateBookingServices() {
+            const bookingServices = document.getElementById('bookingServices');
+            if (!bookingServices) return;
+            
+            bookingServices.innerHTML = '';
+            
+            appData.services.filter(service => service.active).forEach(service => {
+                const serviceOption = document.createElement('div');
+                serviceOption.className = 'time-slot';
+                serviceOption.dataset.serviceId = service.id;
+                serviceOption.innerHTML = `
+                    <div style="font-weight: 600; margin-bottom: 5px;">${service.name}</div>
+                    <div style="font-size: 0.9rem; color: var(--gray);">${service.category}</div>
+                `;
+                
+                serviceOption.addEventListener('click', function() {
+                    // Remove selected class from all options
+                    document.querySelectorAll('#bookingServices .time-slot').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    this.classList.add('selected');
+                    
+                    // Store selected service
+                    currentBooking.service = service.name;
+                    
+                    // Update summary
+                    document.getElementById('summaryService').textContent = service.name;
+                });
+                
+                bookingServices.appendChild(serviceOption);
+            });
+        }
+
+        // Populate appointments table in admin
+        function populateAppointmentsTable() {
+            const appointmentsTableBody = document.getElementById('appointmentsTableBody');
+            const allAppointmentsBody = document.getElementById('allAppointmentsBody');
+            
+            if (appointmentsTableBody) {
+                appointmentsTableBody.innerHTML = '';
+                
+                // Show only recent appointments in dashboard (limit to 5)
+                const recentAppointments = [...appData.appointments]
+                    .sort((a, b) => new Date(b.created) - new Date(a.created))
+                    .slice(0, 5);
+                
+                recentAppointments.forEach(appointment => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${appointment.patientName}</td>
+                        <td>${appointment.date} at ${appointment.time}</td>
+                        <td>${appointment.service}</td>
+                        <td>${appointment.patientPhone}</td>
+                        <td><span class="status-badge status-${appointment.status}">${appointment.status.charAt(0).toUpperCase() + appointment.status.slice(1)}</span></td>
+                        <td>
+                            <button class="action-btn edit-btn" onclick="editAppointment(${appointment.id})">Edit</button>
+                            <button class="action-btn delete-btn" onclick="deleteAppointment(${appointment.id})">Delete</button>
+                        </td>
+                    `;
+                    appointmentsTableBody.appendChild(row);
+                });
+            }
+            
+            if (allAppointmentsBody) {
+                allAppointmentsBody.innerHTML = '';
+                
+                appData.appointments.forEach(appointment => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${appointment.id}</td>
+                        <td>${appointment.patientName}</td>
+                        <td>${appointment.date}</td>
+                        <td>${appointment.time}</td>
+                        <td>${appointment.service}</td>
+                        <td>${appointment.patientPhone}</td>
+                        <td><span class="status-badge status-${appointment.status}">${appointment.status.charAt(0).toUpperCase() + appointment.status.slice(1)}</span></td>
+                        <td>
+                            <button class="action-btn edit-btn" onclick="editAppointment(${appointment.id})">Edit</button>
+                            <button class="action-btn delete-btn" onclick="deleteAppointment(${appointment.id})">Delete</button>
+                        </td>
+                    `;
+                    allAppointmentsBody.appendChild(row);
+                });
+            }
+            
+            // Update stats
+            document.getElementById('totalAppointments').textContent = appData.appointments.length;
+            document.getElementById('pendingAppointments').textContent = appData.appointments.filter(a => a.status === 'pending').length;
+            
+            // Calculate reminders sent today
+            const today = new Date().toISOString().split('T')[0];
+            const remindersToday = appData.reminders.filter(r => r.sentDate === today).length;
+            document.getElementById('remindersSent').textContent = remindersToday;
+        }
+
+        // Populate services table in admin
+        function populateServicesTable() {
+            const servicesTableBody = document.getElementById('servicesTableBody');
+            if (!servicesTableBody) return;
+            
+            servicesTableBody.innerHTML = '';
+            
+            appData.services.forEach(service => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${service.name}</td>
+                    <td>${service.description.substring(0, 60)}...</td>
+                    <td>${service.category}</td>
+                    <td><img src="${service.image}" alt="${service.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;"></td>
+                    <td>${service.active ? '<span class="status-badge status-confirmed">Active</span>' : '<span class="status-badge status-cancelled">Inactive</span>'}</td>
+                    <td>
+                        <button class="action-btn edit-btn" onclick="editService(${service.id})">Edit</button>
+                        <button class="action-btn toggle-btn" onclick="toggleService(${service.id})">${service.active ? 'Deactivate' : 'Activate'}</button>
+                        <button class="action-btn delete-btn" onclick="deleteService(${service.id})">Delete</button>
+                    </td>
+                `;
+                servicesTableBody.appendChild(row);
+            });
+            
+            // Update stats
+            document.getElementById('totalServices').textContent = appData.services.filter(s => s.active).length;
+        }
+
+        // Populate testimonials table in admin
+        function populateTestimonialsTable() {
+            const testimonialsTableBody = document.getElementById('testimonialsTableBody');
+            if (!testimonialsTableBody) return;
+            
+            testimonialsTableBody.innerHTML = '';
+            
+            appData.testimonials.forEach(testimonial => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${testimonial.patient}</td>
+                    <td>${testimonial.text.substring(0, 80)}...</td>
+                    <td>${'★'.repeat(testimonial.rating)}</td>
+                    <td>${testimonial.service}</td>
+                    <td>${testimonial.active ? '<span class="status-badge status-confirmed">Active</span>' : '<span class="status-badge status-cancelled">Inactive</span>'}</td>
+                    <td>
+                        <button class="action-btn edit-btn" onclick="editTestimonial(${testimonial.id})">Edit</button>
+                        <button class="action-btn toggle-btn" onclick="toggleTestimonial(${testimonial.id})">${testimonial.active ? 'Hide' : 'Show'}</button>
+                    </td>
+                `;
+                testimonialsTableBody.appendChild(row);
+            });
+        }
+
+        // Populate reminder history
+        function populateReminderHistory() {
+            const reminderHistoryBody = document.getElementById('reminderHistoryBody');
+            if (!reminderHistoryBody) return;
+            
+            reminderHistoryBody.innerHTML = '';
+            
+            // Sort reminders by date (newest first)
+            const sortedReminders = [...appData.reminders].sort((a, b) => new Date(b.sentDate) - new Date(a.sentDate));
+            
+            sortedReminders.forEach(reminder => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${reminder.sentDate}</td>
+                    <td>${reminder.patientName}</td>
+                    <td>Appointment #${reminder.appointmentId}</td>
+                    <td>${reminder.type}</td>
+                    <td><span class="status-badge status-${reminder.status}">${reminder.status.charAt(0).toUpperCase() + reminder.status.slice(1)}</span></td>
+                `;
+                reminderHistoryBody.appendChild(row);
+            });
+        }
+
+        // Load reminder settings
+        function loadReminderSettings() {
+            const savedSettings = localStorage.getItem('reminderSettings');
+            if (savedSettings) {
+                appData.reminderSettings = JSON.parse(savedSettings);
+            }
+            
+            // Update UI
+            document.getElementById('emailRemindersToggle').checked = appData.reminderSettings.emailEnabled;
+            document.getElementById('emailTiming').value = appData.reminderSettings.emailTiming;
+            document.getElementById('smsRemindersToggle').checked = appData.reminderSettings.smsEnabled;
+            document.getElementById('smsTiming').value = appData.reminderSettings.smsTiming;
+        }
+
+        // Save reminder settings
+        function saveReminderSettings() {
+            appData.reminderSettings = {
+                emailEnabled: document.getElementById('emailRemindersToggle').checked,
+                emailTiming: parseInt(document.getElementById('emailTiming').value),
+                smsEnabled: document.getElementById('smsRemindersToggle').checked,
+                smsTiming: parseInt(document.getElementById('smsTiming').value)
+            };
+            
+            localStorage.setItem('reminderSettings', JSON.stringify(appData.reminderSettings));
+        }
+
+        // Show service editor
+        function showServiceEditor(serviceId) {
+            const serviceEditor = document.getElementById('serviceEditor');
+            const editorTitle = document.getElementById('editorTitle');
+            const servicesTable = document.querySelector('#servicesPanel .table-responsive');
+            
+            if (serviceId) {
+                // Edit existing service
+                editorTitle.textContent = 'Edit Service';
+                const service = appData.services.find(s => s.id === serviceId);
+                if (service) {
+                    document.getElementById('serviceName').value = service.name;
+                    document.getElementById('serviceCategory').value = service.category;
+                    document.getElementById('serviceDescription').value = service.description;
+                    document.getElementById('serviceIcon').value = service.icon;
+                    document.getElementById('serviceImageUrl').value = service.image;
+                    document.getElementById('serviceActive').checked = service.active;
+                    updateImagePreview(service.image);
+                    
+                    // Show filename if it's a URL
+                    const fileNameDisplay = document.getElementById('fileNameDisplay');
+                    if (service.image.startsWith('http')) {
+                        const urlParts = service.image.split('/');
+                        fileNameDisplay.textContent = urlParts[urlParts.length - 1] || 'Image from URL';
+                    } else {
+                        fileNameDisplay.textContent = 'No file selected';
+                    }
+                    
+                    currentServiceEditId = serviceId;
+                }
+            } else {
+                // Add new service
+                editorTitle.textContent = 'Add New Service';
+                document.getElementById('serviceName').value = '';
+                document.getElementById('serviceCategory').value = 'General';
+                document.getElementById('serviceDescription').value = '';
+                document.getElementById('serviceIcon').value = 'fas fa-stethoscope';
+                document.getElementById('serviceImageUrl').value = '';
+                document.getElementById('serviceActive').checked = true;
+                updateImagePreview('');
+                document.getElementById('fileNameDisplay').textContent = 'No file selected';
+                currentServiceEditId = null;
+            }
+            
+            // Show editor, hide table
+            serviceEditor.classList.remove('d-none');
+            servicesTable.style.display = 'none';
+        }
+
+        // Hide service editor
+        function hideServiceEditor() {
+            const serviceEditor = document.getElementById('serviceEditor');
+            const servicesTable = document.querySelector('#servicesPanel .table-responsive');
+            
+            serviceEditor.classList.add('d-none');
+            servicesTable.style.display = 'block';
+            currentServiceEditId = null;
+        }
+
+        // Update image preview
+        function updateImagePreview(imageUrl) {
+            const imagePreview = document.getElementById('imagePreview');
+            if (imageUrl) {
+                imagePreview.innerHTML = `<img src="${imageUrl}" alt="Service Image Preview" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'">`;
+            } else {
+                imagePreview.innerHTML = '<span>No image selected</span>';
+            }
+        }
+
+        // Save service
+        function saveService() {
+            const name = document.getElementById('serviceName').value;
+            const category = document.getElementById('serviceCategory').value;
+            const description = document.getElementById('serviceDescription').value;
+            const icon = document.getElementById('serviceIcon').value;
+            const image = document.getElementById('serviceImageUrl').value;
+            const active = document.getElementById('serviceActive').checked;
+            
+            if (!name || !description) {
+                showNotification('Please fill in all required fields.', 'error');
+                return;
+            }
+            
+            if (currentServiceEditId) {
+                // Update existing service
+                const serviceIndex = appData.services.findIndex(s => s.id === currentServiceEditId);
+                if (serviceIndex !== -1) {
+                    appData.services[serviceIndex] = {
+                        ...appData.services[serviceIndex],
+                        name,
+                        category,
+                        description,
+                        icon,
+                        image: image || appData.services[serviceIndex].image,
+                        active
+                    };
+                }
+            } else {
+                // Add new service
+                const newService = {
+                    id: appData.services.length + 1,
+                    name,
+                    category,
+                    description,
+                    icon,
+                    image: image || 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+                    active
+                };
+                appData.services.push(newService);
+            }
+            
+            // Update displays
+            populateServicesTable();
+            renderServices();
+            populateBookingServices();
+            
+            // Hide editor
+            hideServiceEditor();
+            
+            showNotification('Service saved successfully.');
+        }
+
+        // Edit service
+        function editService(serviceId) {
+            showServiceEditor(serviceId);
+        }
+
+        // Toggle service status
+        function toggleService(serviceId) {
+            const serviceIndex = appData.services.findIndex(s => s.id === serviceId);
+            if (serviceIndex !== -1) {
+                appData.services[serviceIndex].active = !appData.services[serviceIndex].active;
+                populateServicesTable();
+                renderServices();
+                populateBookingServices();
+                showNotification(`Service ${appData.services[serviceIndex].active ? 'activated' : 'deactivated'} successfully.`);
+            }
+        }
+
+        // Delete service
+        function deleteService(serviceId) {
+            if (confirm('Are you sure you want to delete this service? This action cannot be undone.')) {
+                const serviceIndex = appData.services.findIndex(s => s.id === serviceId);
+                if (serviceIndex !== -1) {
+                    appData.services.splice(serviceIndex, 1);
+                    populateServicesTable();
+                    renderServices();
+                    populateBookingServices();
+                    showNotification('Service deleted successfully.');
+                }
+            }
+        }
+
+        // Edit appointment
+        function editAppointment(appointmentId) {
+            const appointment = appData.appointments.find(a => a.id === appointmentId);
+            if (appointment) {
+                if (confirm(`Edit appointment for ${appointment.patientName}?`)) {
+                    const newStatus = prompt('Enter new status (pending/confirmed/completed/cancelled):', appointment.status);
+                    if (newStatus && ['pending', 'confirmed', 'completed', 'cancelled'].includes(newStatus)) {
+                        appointment.status = newStatus;
+                        populateAppointmentsTable();
+                        showNotification('Appointment updated successfully.');
+                    }
+                }
+            }
+        }
+
+        // Delete appointment
+        function deleteAppointment(appointmentId) {
+            if (confirm('Are you sure you want to delete this appointment?')) {
+                const appointmentIndex = appData.appointments.findIndex(a => a.id === appointmentId);
+                if (appointmentIndex !== -1) {
+                    appData.appointments.splice(appointmentIndex, 1);
+                    populateAppointmentsTable();
+                    showNotification('Appointment deleted successfully.');
+                }
+            }
+        }
+
+        // Edit testimonial
+        function editTestimonial(testimonialId) {
+            const testimonial = appData.testimonials.find(t => t.id === testimonialId);
+            if (testimonial) {
+                const newText = prompt('Edit testimonial text:', testimonial.text);
+                if (newText) {
+                    testimonial.text = newText;
+                    populateTestimonialsTable();
+                    showNotification('Testimonial updated successfully.');
+                }
+            }
+        }
+
+        // Toggle testimonial
+        function toggleTestimonial(testimonialId) {
+            const testimonial = appData.testimonials.find(t => t.id === testimonialId);
+            if (testimonial) {
+                testimonial.active = !testimonial.active;
+                populateTestimonialsTable();
+                showNotification(`Testimonial ${testimonial.active ? 'activated' : 'deactivated'} successfully.`);
+            }
+        }
+
+        // Setup booking steps navigation
+        function setupBookingSteps() {
+            const steps = document.querySelectorAll('.booking-form-page');
+            const stepIndicators = document.querySelectorAll('.step');
+            
+            // Next step 1
+            const nextStep1 = document.getElementById('nextStep1');
+            if (nextStep1) {
+                nextStep1.addEventListener('click', function() {
+                    if (!currentBooking.service) {
+                        showNotification('Please select a service to continue.', 'error');
+                        return;
+                    }
+                    
+                    // Update step indicators
+                    stepIndicators.forEach(step => {
+                        step.classList.remove('active');
+                        if (parseInt(step.dataset.step) === 2) {
+                            step.classList.add('active');
+                        } else if (parseInt(step.dataset.step) === 1) {
+                            step.classList.add('completed');
+                        }
+                    });
+                    
+                    // Show next page
+                    steps.forEach(page => {
+                        page.classList.remove('active');
+                        if (parseInt(page.dataset.page) === 2) {
+                            page.classList.add('active');
+                        }
+                    });
+                });
+            }
+            
+            // Next step 2
+            const nextStep2 = document.getElementById('nextStep2');
+            if (nextStep2) {
+                nextStep2.addEventListener('click', function() {
+                    const date = document.getElementById('bookingDate').value;
+                    const time = document.getElementById('bookingTime').value;
+                    
+                    if (!date || !time) {
+                        showNotification('Please select a date and time to continue.', 'error');
+                        return;
+                    }
+                    
+                    // Store booking data
+                    currentBooking.date = date;
+                    currentBooking.time = time;
+                    
+                    // Get reminder method
+                    const reminderMethod = document.querySelector('input[name="reminder_method"]:checked');
+                    currentBooking.reminderMethod = reminderMethod ? reminderMethod.value : 'sms';
+                    
+                    // Format date for display
+                    const dateObj = new Date(date);
+                    const formattedDate = dateObj.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                    const formattedTime = time + (parseInt(time) < 12 ? ' AM' : ' PM');
+                    
+                    // Update summary
+                    document.getElementById('summaryDate').textContent = formattedDate;
+                    document.getElementById('summaryTime').textContent = formattedTime;
+                    
+                    // Get reminder method text
+                    const reminderText = currentBooking.reminderMethod === 'both' ? 'Email & SMS' : 
+                                         currentBooking.reminderMethod === 'email' ? 'Email' : 'SMS';
+                    document.getElementById('summaryReminders').textContent = reminderText;
+                    
+                    // Update step indicators
+                    stepIndicators.forEach(step => {
+                        step.classList.remove('active');
+                        if (parseInt(step.dataset.step) === 3) {
+                            step.classList.add('active');
+                        } else {
+                            step.classList.add('completed');
+                        }
+                    });
+                    
+                    // Show next page
+                    steps.forEach(page => {
+                        page.classList.remove('active');
+                        if (parseInt(page.dataset.page) === 3) {
+                            page.classList.add('active');
+                        }
+                    });
+                });
+            }
+            
+            // Next step 3
+            const nextStep3 = document.getElementById('nextStep3');
+            if (nextStep3) {
+                nextStep3.addEventListener('click', function() {
+                    const patientName = document.getElementById('patientName').value;
+                    const patientEmail = document.getElementById('patientEmail').value;
+                    const patientPhone = document.getElementById('patientPhone').value;
+                    
+                    if (!patientName || !patientEmail || !patientPhone) {
+                        showNotification('Please fill in all required patient details to continue.', 'error');
+                        return;
+                    }
+                    
+                    // Store booking data
+                    currentBooking.patientName = patientName;
+                    currentBooking.patientEmail = patientEmail;
+                    currentBooking.patientPhone = patientPhone;
+                    
+                    // Update summary
+                    document.getElementById('summaryPatient').textContent = patientName;
+                    document.getElementById('summaryContact').textContent = `${patientPhone}, ${patientEmail}`;
+                    
+                    // Update step indicators
+                    stepIndicators.forEach(step => {
+                        step.classList.remove('active');
+                        if (parseInt(step.dataset.step) === 4) {
+                            step.classList.add('active');
+                        } else {
+                            step.classList.add('completed');
+                        }
+                    });
+                    
+                    // Show next page
+                    steps.forEach(page => {
+                        page.classList.remove('active');
+                        if (parseInt(page.dataset.page) === 4) {
+                            page.classList.add('active');
+                        }
+                    });
+                });
+            }
+            
+            // Back buttons
+            const prevStep2 = document.getElementById('prevStep2');
+            if (prevStep2) {
+                prevStep2.addEventListener('click', function() {
+                    // Update step indicators
+                    stepIndicators.forEach(step => {
+                        step.classList.remove('active', 'completed');
+                        if (parseInt(step.dataset.step) === 1) {
+                            step.classList.add('active');
+                        }
+                    });
+                    
+                    // Show previous page
+                    steps.forEach(page => {
+                        page.classList.remove('active');
+                        if (parseInt(page.dataset.page) === 1) {
+                            page.classList.add('active');
+                        }
+                    });
+                });
+            }
+            
+            const prevStep3 = document.getElementById('prevStep3');
+            if (prevStep3) {
+                prevStep3.addEventListener('click', function() {
+                    // Update step indicators
+                    stepIndicators.forEach(step => {
+                        step.classList.remove('active', 'completed');
+                        if (parseInt(step.dataset.step) === 2) {
+                            step.classList.add('active');
+                        } else if (parseInt(step.dataset.step) === 1) {
+                            step.classList.add('completed');
+                        }
+                    });
+                    
+                    // Show previous page
+                    steps.forEach(page => {
+                        page.classList.remove('active');
+                        if (parseInt(page.dataset.page) === 2) {
+                            page.classList.add('active');
+                        }
+                    });
+                });
+            }
+            
+            const prevStep4 = document.getElementById('prevStep4');
+            if (prevStep4) {
+                prevStep4.addEventListener('click', function() {
+                    // Update step indicators
+                    stepIndicators.forEach(step => {
+                        step.classList.remove('active', 'completed');
+                        if (parseInt(step.dataset.step) === 3) {
+                            step.classList.add('active');
+                        } else if (parseInt(step.dataset.step) <= 2) {
+                            step.classList.add('completed');
+                        }
+                    });
+                    
+                    // Show previous page
+                    steps.forEach(page => {
+                        page.classList.remove('active');
+                        if (parseInt(page.dataset.page) === 3) {
+                            page.classList.add('active');
+                        }
+                    });
+                });
+            }
+        }
+
+        // Reset booking steps
+        function resetBookingSteps() {
+            const steps = document.querySelectorAll('.booking-form-page');
+            const stepIndicators = document.querySelectorAll('.step');
+            
+            // Reset step indicators
+            stepIndicators.forEach(step => {
+                step.classList.remove('active', 'completed');
+                if (parseInt(step.dataset.step) === 1) {
+                    step.classList.add('active');
+                }
+            });
+            
+            // Show first page
+            steps.forEach(page => {
+                page.classList.remove('active');
+                if (parseInt(page.dataset.page) === 1) {
+                    page.classList.add('active');
+                }
+            });
+        }
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === bookingModal) {
+                bookingModal.classList.remove('active');
+            }
+            if (e.target === successModal) {
+                successModal.classList.remove('active');
+            }
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
+            }
+            if (e.target.id === 'privacyPolicyModal') {
+                document.getElementById('privacyPolicyModal').classList.remove('active');
+            }
+            if (e.target.id === 'termsServiceModal') {
+                document.getElementById('termsServiceModal').classList.remove('active');
+            }
+            if (e.target.id === 'hipaaModal') {
+                document.getElementById('hipaaModal').classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('d-none');
+                }
+            });
+        });
+
+        // Make functions available globally for onclick handlers
+        window.editService = editService;
+        window.toggleService = toggleService;
+        window.deleteService = deleteService;
+        window.editAppointment = editAppointment;
+        window.deleteAppointment = deleteAppointment;
+        window.editTestimonial = editTestimonial;
+        window.toggleTestimonial = toggleTestimonial;
+    </script>
+</body>
+</html>
